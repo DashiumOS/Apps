@@ -1,0 +1,4 @@
+name: home-assistant
+description: Open source home automation platform
+version: 2024.1.0
+image: docker.io/homeassistant/home-assistant:2024.1.0
