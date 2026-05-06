@@ -1,0 +1,28 @@
+name: gitlab
+description: Complete DevOps platform
+version: 16.7.0
+image: docker.io/gitlab/gitlab-ce:16.7.0-ce.0
+ports:
+  80: 8080
+  443: 8443
+  22: 2222
+environment:
+  GITLAB_OMNIBUS_CONFIG: "external_url 'http://localhost:8080'; gitlab_rails['gitlab_shell_ssh_port'] = 2222;"
+volumes:
+  - name: config
+    path: /etc/gitlab
+  - name: logs
+    path: /var/log/gitlab
+  - name: data
+    path: /var/opt/gitlab
+resourceLimits:
+  cpu: 2.0
+  memory: 2048
+healthCheck:
+  command:
+    - CMD-SHELL
+    - curl -f http://localhost/-/readiness || exit 1
+  interval: 60
+  timeout: 30
+  retries: 10
+  startPeriod: 300
