@@ -19,6 +19,10 @@ on:
       - '**/app.png'
   workflow_dispatch:  # Allows manual triggering
 
+permissions:
+  contents: write
+  pull-requests: write
+
 jobs:
   generate-apps:
     runs-on: ubuntu-latest
