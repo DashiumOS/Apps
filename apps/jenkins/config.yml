@@ -1,0 +1,4 @@
+name: jenkins
+description: Open source automation server for CI/CD
+version: 2.426.1
+image: docker.io/jenkins/jenkins:lts-jdk17
