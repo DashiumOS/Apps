@@ -1,0 +1,7 @@
+category: database
+tags: cache, database, key-value, nosql
+author: Redis Ltd
+homepage: https://redis.io
+license: BSD-3-Clause
+icon: fa-bolt
+featured: true

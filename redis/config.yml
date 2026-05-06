@@ -1,0 +1,22 @@
+name: redis
+description: In-memory data structure store used as database and cache
+version: 7.2.3
+image: docker.io/library/redis:7.2.3-alpine
+ports:
+  6379: 6379
+environment: {}
+volumes:
+  - name: data
+    path: /data
+resourceLimits:
+  cpu: 0.5
+  memory: 256
+healthCheck:
+  command:
+    - CMD
+    - redis-cli
+    - ping
+  interval: 30
+  timeout: 10
+  retries: 3
+  startPeriod: 10
