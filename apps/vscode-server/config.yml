@@ -1,0 +1,4 @@
+name: vscode-server
+description: Visual Studio Code server for web-based development
+version: 4.95.3
+image: docker.io/linuxserver/code-server:4.95.3
