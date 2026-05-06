@@ -1,0 +1,7 @@
+category: database
+tags: database, sql, postgresql, postgres
+author: PostgreSQL Global Development Group
+homepage: https://www.postgresql.org
+license: PostgreSQL
+icon: fa-database
+featured: true

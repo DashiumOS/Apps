@@ -1,0 +1,24 @@
+name: postgresql
+description: Advanced open source relational database
+version: 16.1
+image: docker.io/library/postgres:16.1-alpine
+ports:
+  5432: 5432
+environment:
+  POSTGRES_USER: postgres
+  POSTGRES_PASSWORD: changeme
+  POSTGRES_DB: postgres
+volumes:
+  - name: data
+    path: /var/lib/postgresql/data
+resourceLimits:
+  cpu: 1.0
+  memory: 512
+healthCheck:
+  command:
+    - CMD-SHELL
+    - pg_isready -U postgres
+  interval: 30
+  timeout: 10
+  retries: 5
+  startPeriod: 60
