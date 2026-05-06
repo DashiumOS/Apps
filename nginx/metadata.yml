@@ -1,0 +1,7 @@
+category: web
+tags: web-server, reverse-proxy, http
+author: NGINX Inc
+homepage: https://nginx.org
+license: BSD-2-Clause
+icon: fa-server
+featured: true

@@ -1,0 +1,24 @@
+name: nginx
+description: High performance web server and reverse proxy
+version: 1.25.3
+image: docker.io/library/nginx:1.25.3-alpine
+ports:
+  80: 8080
+  443: 8443
+environment: {}
+volumes:
+  - name: html
+    path: /usr/share/nginx/html
+  - name: conf
+    path: /etc/nginx/conf.d
+resourceLimits:
+  cpu: 0.5
+  memory: 128
+healthCheck:
+  command:
+    - CMD-SHELL
+    - wget --quiet --tries=1 --spider http://localhost/ || exit 1
+  interval: 30
+  timeout: 10
+  retries: 3
+  startPeriod: 10
