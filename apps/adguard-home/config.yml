@@ -1,0 +1,4 @@
+name: adguard-home
+description: Network-wide ads and trackers blocking DNS server
+version: v0.107.43
+image: docker.io/adguard/adguardhome:v0.107.43
