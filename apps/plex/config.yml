@@ -1,0 +1,4 @@
+name: plex
+description: Media server for organizing and streaming media
+version: 1.40.2
+image: docker.io/plexinc/pms-docker:1.40.2.8395-c29d4c0c8
