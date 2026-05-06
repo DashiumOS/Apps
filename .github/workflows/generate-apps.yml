@@ -1,0 +1,62 @@
+name: Generate Apps Registry
+
+on:
+  push:
+    branches: [ main ]
+    paths:
+      - '**/config.yml'
+      - '**/metadata.yml'
+      - '**/icon.png'
+      - '**/logo.png'
+      - '**/app.png'
+  pull_request:
+    branches: [ main ]
+    paths:
+      - '**/config.yml'
+      - '**/metadata.yml'
+      - '**/icon.png'
+      - '**/logo.png'
+      - '**/app.png'
+
+jobs:
+  generate-apps:
+    runs-on: ubuntu-latest
+    
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v4
+      
+    - name: Setup Node.js
+      uses: actions/setup-node@v4
+      with:
+        node-version: '18'
+        
+    - name: Install yq (YAML processor)
+      run: |
+        sudo wget -qO /usr/local/bin/yq https://github.com/mikefarah/yq/releases/download/v4.40.2/yq_linux_amd64
+        sudo chmod +x /usr/local/bin/yq
+        
+    - name: Generate apps.json
+      run: |
+        chmod +x .github/scripts/generate-apps.sh
+        .github/scripts/generate-apps.sh
+        
+    - name: Upload apps.json as artifact
+      uses: actions/upload-artifact@v4
+      with:
+        name: apps-registry
+        path: apps.json
+        
+    - name: Commit and push apps.json
+      run: |
+        git config --local user.email "action@github.com"
+        git config --local user.name "GitHub Action"
+        git add apps.json
+        if git diff --staged --quiet; then
+          git commit -m "Auto-update apps.json [skip ci]"
+          git push
+        else
+          echo "No changes to apps.json"
+        fi
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
