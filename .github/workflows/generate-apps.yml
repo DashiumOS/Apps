@@ -47,16 +47,31 @@ jobs:
         name: apps-registry
         path: apps.json
         
-    - name: Commit and push apps.json
+    - name: Commit and create pull request
       run: |
         git config --local user.email "action@github.com"
         git config --local user.name "GitHub Action"
         git add apps.json
+        
+        # Check if there are changes to commit
         if git diff --staged --quiet; then
-          git commit -m "Auto-update apps.json [skip ci]"
-          git push
-        else
           echo "No changes to apps.json"
+        else
+          # Create a new branch for the PR
+          BRANCH_NAME="auto-update-apps-$(date +%Y%m%d-%H%M%S)"
+          git checkout -b "$BRANCH_NAME"
+          git commit -m "Auto-update apps.json"
+          
+          # Push the new branch
+          git push origin "$BRANCH_NAME"
+          
+          # Create pull request using GitHub CLI
+          gh pr create \
+            --title "Auto-update apps.json" \
+            --body "This PR automatically updates the apps.json file with changes from app configurations." \
+            --base main \
+            --head "$BRANCH_NAME" \
+            --label "automated-pr"
         fi
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
