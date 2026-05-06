@@ -1,0 +1,24 @@
+name: portainer
+description: Container management platform for Docker and Kubernetes
+version: 2.19.4
+image: docker.io/portainer/portainer-ce:2.19.4-alpine
+ports:
+  9443: 9443
+  8000: 8000
+environment: {}
+volumes:
+  - name: data
+    path: /data
+  - name: docker
+    path: /var/run/docker.sock
+resourceLimits:
+  cpu: 0.5
+  memory: 256
+healthCheck:
+  command:
+    - CMD-SHELL
+    - wget --quiet --tries=1 --spider https://localhost:9443 || exit 1
+  interval: 30
+  timeout: 10
+  retries: 3
+  startPeriod: 30
