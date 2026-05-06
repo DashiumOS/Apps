@@ -17,6 +17,7 @@ on:
       - '**/icon.png'
       - '**/logo.png'
       - '**/app.png'
+  workflow_dispatch:  # Allows manual triggering
 
 jobs:
   generate-apps:
