@@ -46,12 +46,6 @@ jobs:
         chmod +x .github/scripts/generate-apps.sh
         .github/scripts/generate-apps.sh
         
-    - name: Upload apps.json as artifact
-      uses: actions/upload-artifact@v4
-      with:
-        name: apps-registry
-        path: apps.json
-        
     - name: Commit and push changes
       run: |
         git config --local user.email "action@github.com"
