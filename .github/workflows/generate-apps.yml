@@ -70,13 +70,18 @@ jobs:
           # Push the new branch using GITHUB_TOKEN
           git push "https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }}" "$BRANCH_NAME"
           
-          # Create pull request using GitHub CLI
-          gh pr create \
-            --title "Auto-update apps.json" \
-            --body "This PR automatically updates the apps.json file with changes from app configurations." \
-            --base main \
-            --head "$BRANCH_NAME" \
-            --label "automated-pr"
+          # Create pull request using GitHub REST API
+          curl -X POST \
+            -H "Authorization: token ${{ secrets.GITHUB_TOKEN }}" \
+            -H "Accept: application/vnd.github.v3+json" \
+            https://api.github.com/repos/${{ github.repository }}/pulls \
+            -d '{
+              "title": "Auto-update apps.json",
+              "body": "This PR automatically updates the apps.json file with changes from app configurations.",
+              "head": "'"$BRANCH_NAME"'",
+              "base": "main",
+              "labels": ["automated-pr"]
+            }'
         fi
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
