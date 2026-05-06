@@ -1,0 +1,7 @@
+category: monitoring
+tags: monitoring, metrics, alerting, time-series
+author: Prometheus Authors
+homepage: https://prometheus.io
+license: Apache-2.0
+icon: fa-chart-bar
+featured: true

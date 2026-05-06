@@ -1,0 +1,23 @@
+name: prometheus
+description: Open-source systems monitoring and alerting toolkit
+version: 2.48.0
+image: docker.io/library/prom/prometheus:v2.48.0
+ports:
+  9090: 9090
+environment: {}
+volumes:
+  - name: data
+    path: /prometheus
+  - name: config
+    path: /etc/prometheus
+resourceLimits:
+  cpu: 1.0
+  memory: 512
+healthCheck:
+  command:
+    - CMD-SHELL
+    - wget --quiet --tries=1 --spider http://localhost:9090/-/healthy || exit 1
+  interval: 30
+  timeout: 10
+  retries: 3
+  startPeriod: 30
