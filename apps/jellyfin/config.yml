@@ -1,0 +1,4 @@
+name: jellyfin
+description: Open source media server for organizing and streaming media
+version: 10.8.13
+image: docker.io/jellyfin/jellyfin:10.8.13
