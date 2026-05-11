@@ -1,0 +1,4 @@
+name: isoman
+description: ISO management and virtualization platform
+version: 1.5.0
+image: docker.io/isoman/isoman:1.5.0

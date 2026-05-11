@@ -1,0 +1,4 @@
+name: planka
+description: Open source project management and collaboration tool
+version: 1.18.2
+image: docker.io/plankapl/planka:1.18.2

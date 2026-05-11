@@ -1,0 +1,4 @@
+name: scannopy
+description: Document scanning and OCR solution
+version: 2.0.0
+image: docker.io/scannopy/scannopy:2.0.0
