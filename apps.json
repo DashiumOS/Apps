@@ -13,6 +13,19 @@
     "featured": false
   },
   {
+    "name": "planka",
+    "description": "Open source project management and collaboration tool",
+    "version": "1.18.2",
+    "image": "docker.io/plankapl/planka:1.18.2",
+    "category": "productivity",
+    "tags": "project-management, collaboration, kanban, tasks, teamwork",
+    "author": "Planka Team",
+    "homepage": "https://planka.app",
+    "license": "AGPL-3.0",
+    "icon": "fa-tasks",
+    "featured": true
+  },
+  {
     "name": "jellyfin",
     "description": "Open source media server for organizing and streaming media",
     "version": "10.8.13",
@@ -54,8 +67,8 @@
   {
     "name": "n8n",
     "description": "Workflow automation tool",
-    "version": "1.28.1",
-    "image": "docker.io/n8nio/n8n:1.28.1",
+    "version": "2.19.5",
+    "image": "docker.io/n8nio/n8n:2.19.5",
     "category": "automation",
     "tags": "automation, workflow, integration, no-code",
     "author": "n8n",
@@ -130,6 +143,19 @@
     "featured": true
   },
   {
+    "name": "scannopy",
+    "description": "Document scanning and OCR solution",
+    "version": "2.0.0",
+    "image": "docker.io/scannopy/scannopy:2.0.0",
+    "category": "productivity",
+    "tags": "scanning, ocr, documents, pdf, automation",
+    "author": "Scannopy Team",
+    "homepage": "https://scannopy.app",
+    "license": "MIT",
+    "icon": "fa-file-alt",
+    "featured": false
+  },
+  {
     "name": "plex",
     "description": "Media server for organizing and streaming media",
     "version": "1.40.2",
@@ -154,6 +180,19 @@
     "license": "BSD-2-Clause",
     "icon": "fa-server",
     "featured": true
+  },
+  {
+    "name": "isoman",
+    "description": "ISO management and virtualization platform",
+    "version": "1.5.0",
+    "image": "docker.io/isoman/isoman:1.5.0",
+    "category": "system",
+    "tags": "virtualization, iso, management, system-tools",
+    "author": "Isoman Team",
+    "homepage": "https://isoman.io",
+    "license": "GPL-3.0",
+    "icon": "fa-compact-disc",
+    "featured": false
   },
   {
     "name": "portainer",
